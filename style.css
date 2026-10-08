@@ -3,4 +3,189 @@ body {
 	   and use the OS’s UI font as the website font
 	 */
   font: 100%/1.5 system-ui;
+  max-width: 100ch;
+  margin-inline: auto;
+  padding-inline: lem;
+  box-sizing: border-box;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+nav ul,
+nav li {
+  display: contents;
+}
+
+nav{
+  display: flex;
+  margin-bottom: lem;
+  border-bottom: 1px solid oklch(80% 3% 200);
+}
+
+nav a{
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 0.5em;
+}
+
+nav a.current{
+  border-bottom: 0.4em solid oklch(80% 3% 200);
+  padding-bottom: 0.1em;
+}
+
+html{
+  --color-accent: oklch(84.084% 0.07874 314.326);
+  accent-color: var(--color-accent);
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  padding-bottom: 0.1em;
+  background-color: oklch(from var(--color-accent) 95% 5% h);
+}
+
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1em;
+    max-width: 60ch;
+}
+
+form label {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+}
+
+form button {
+    grid-column: 1 / -1;
+}
+
+.projects{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  gap: 2em;
+}
+
+.projects article{
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 3;
+  gap: 1em;
+}
+
+.projects h2{
+  margin: 0
+}
+
+h1 {
+    font-size: 300%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.1;
+    text-wrap: balance;
+}
+
+
+/* Resume specific styles */
+.resume {
+    line-height: 1.6;
+    color: #263238;
+}
+
+.resume h1 {
+    font-size: 3em;
+    margin-bottom: 1em;
+    color: #1f2937;
+}
+
+.resume section {
+    margin-bottom: 2.5em;
+}
+
+.resume section h2 {
+    font-size: 1.5em;
+    color: #1f2937;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.4em;
+    margin-bottom: 1.2em;
+}
+
+.resume article {
+    margin-bottom: 1.8em;
+    padding: 1.2em 1.5em;
+    background-color: #f8fafc;
+    border-left: 3px solid #cbd5e1;
+    border-radius: 0.4em;
+}
+
+.resume article h3 {
+    font-size: 1.2em;
+    color: #111827;
+    margin: 0 0 0.3em;
+}
+
+.resume article p {
+    margin: 0.3em 0;
+}
+
+.resume article h3 + p {
+    font-weight: 600;
+    color: #374151;
+}
+
+.resume time {
+    color: #64748b;
+    font-size: 0.9em;
+}
+
+.resume article ul {
+    margin-top: 0.8em;
+    margin-bottom: 0;
+    padding-left: 1.4em;
+}
+
+.resume article li {
+    margin-bottom: 0.5em;
+    line-height: 1.5;
+}
+
+.resume section:last-of-type {
+    background-color: #f8fafc;
+    padding: 1.5em;
+    border-radius: 0.5em;
+}
+
+.resume section:last-of-type strong {
+    color: #1f2937;
+}
+
+.resume section:last-of-type p {
+    margin: 0.7em 0;
+}
+
+@media (max-width: 600px) {
+    .resume h1 {
+        font-size: 2.5em;
+    }
+
+    .resume article {
+        padding: 1em;
+    }
+
+    .resume section h2 {
+        font-size: 1.3em;
+    }
 }
