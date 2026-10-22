@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abortion Clinic Availability | Project 2</title>
+        <style>
+            :root {
+                --color-neutral-95: hsl(220 10% 95%);
+                --color-neutral-90: hsl(220 10% 90%);
+                --color-neutral-80: hsl(220 10% 80%);
+                --color-neutral-70: hsl(220 10% 70%);
+                --color-neutral-60: hsl(220 10% 60%);
+                --color-neutral-50: hsl(220 10% 50%);
+                --color-neutral-40: hsl(220 10% 40%);
+                --color-neutral-30: hsl(220 10% 30%);
+                --color-neutral-20: hsl(220 10% 20%);
+                --color-neutral-10: hsl(220 10% 10%);
+            }
+
+            html {
+                font: 100%/1.5 system-ui;
+                counter-reset: figure;
+                background: var(--color-neutral-95);
+                max-width: min(75vw, 80em);
+                margin: 0 auto;
+            }
+
+            /* Headings */
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                line-height: 1.1;
+                font-weight: 600;
+                text-wrap: balance;
+            }
+
+            h1,
+            h2 {
+                border-bottom: 1px solid var(--color-neutral-80);
+                padding-bottom: 0.2em;
+            }
+
+            h1 {
+                margin-block: 1em 0.5rem;
+                font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+                font-weight: 800;
+
+                small {
+                    display: block;
+                    width: fit-content;
+                    padding: 0.2em 0.5em;
+                    margin-inline: auto;
+                    color: white;
+                    background: var(--color-neutral-40);
+                    font-size: 40%;
+                    text-transform: uppercase;
+                    white-space: nowrap;
+                }
+            }
+
+            h2 {
+                font-size: 180%;
+                color: var(--color-neutral-30);
+            }
+
+            h3 {
+                font-size: 130%;
+            }
+
+            /* Lists */
+
+            ul,
+            ol {
+                padding-inline-start: 2em;
+            }
+
+            li {
+                &::marker {
+                    color: var(--color-neutral-40);
+                }
+
+                + li {
+                    margin-top: 0.2em;
+                }
+            }
+
+            /* Sectioning elements */
+
+            header {
+                padding-block: 1em;
+                text-align: center;
+            }
+
+            main {
+                background: white;
+                color: var(--color-neutral-20);
+                border-radius: 1rem;
+                padding: 0.1rem 2rem;
+            }
+
+            /* Figures */
+
+            figure {
+                margin: 1em 0;
+                padding: 0.5rem;
+                margin-inline: -0.5em;
+                border: 1px solid var(--color-neutral-80);
+                box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+                text-align: center;
+                background: white;
+
+                > figcaption {
+                    font: 500 75% var(--font-sans);
+                    background: var(--color-neutral-95);
+                    padding: 0.5rem;
+                    margin: -0.5rem;
+                    margin-top: 0.5rem;
+                    counter-increment: figure;
+                    text-align: left;
+
+                    &::before {
+                        content: "Figure " counter(figure) ": ";
+                        font-weight: bold;
+                        color: var(--color-neutral-40);
+                    }
+
+                    a:not(:hover, :focus, :active) {
+                        color: inherit;
+                        text-decoration: underline;
+                        text-decoration-color: color-mix(
+                            in lab,
+                            currentColor,
+                            transparent 70%
+                        );
+                    }
+                }
+            }
+        img { display:block; width:100%; height:auto; margin:auto; }
+html { max-width: 76rem; padding: 0 1rem; }
+body { margin:0; }
+main { padding: 1rem clamp(1rem, 4vw, 3rem); }
+section { margin-block: 2.5rem; }
+li { margin-bottom: 1rem; }
+figure > figcaption { font: 500 .875rem/1.5 system-ui; }
+@media(max-width:600px) { h1 { font-size:2.2rem; } main { border-radius:.5rem; } }
+</style>
+    </head>
+
+    <body>
+        <header>
+            <h1>
+                <small>Project 2</small>
+                Persuasive or Deceptive Visualization?
+            </h1>
+
+            <p>Sadhana Tadepalli — <a href="mailto:satadepalli@ucsd.edu">satadepalli@ucsd.edu</a><br>
+Kyle Shiroma — <a href="mailto:ksshiroma@ucsd.edu">ksshiroma@ucsd.edu</a><br>
+Raynard Taneka — <a href="mailto:rtaneka@ucsd.edu">rtaneka@ucsd.edu</a></p>
+        </header>
+
+        <main>
+            <h2>Proposition: Abortion clinic availability expanded in the United States between 2017 and 2020.</h2>
+<p><strong>Measure:</strong> Change in the number of abortion clinics between 2017 and 2020.<br>
+<strong>Dataset:</strong> <a href="https://dsc106.com/resources/data/GuttmacherInstituteAbortionDataByState.xlsx">Guttmacher Institute Abortion Data by State (Excel)</a></p>
+<section>
+                <h3>FOR the Proposition</h3>
+
+                <figure>
+                    <img src="supporting_clinic_map.png" alt="U.S. tile map highlighting 15 states with clinic gains from 2017 to 2020; darker green indicates larger gains." />
+                    <figcaption>15 states gained a combined 42 abortion clinics between 2017 and 2020. California had the largest gain, with 12 additional clinics.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul><li><strong>Highlight gains and gray out other states (−1.5):</strong> We highlight the 15 states that gained clinics, while states with losses or no change appear in gray. The national net decrease of five clinics is not shown in this map, directing attention toward growth. We considered a red-and-green map showing both gains and losses, but it would weaken the supporting message.</li>
+<li><strong>Emphasize gains in the title (−1):</strong> The title directs readers toward the 15 states that gained clinics, and the green tiles reinforce that focus. It counts states rather than people and does not establish how many people benefited. A more balanced alternative would describe changes across all states, but we chose a title that emphasizes expansion.</li>
+<li><strong>Use darker green for larger gains (−0.5):</strong> The gradient distinguishes the size of gains, with California’s increase of 12 clinics appearing darkest. Green also associates the changes with positive growth, although many states gained only one clinic. A neutral blue scale could communicate the same values with less positive framing.</li>
+<li><strong>Label each gain directly (+2):</strong> Each highlighted tile displays its exact change, allowing readers to see that most gains are small without estimating from color alone. We considered relying only on the color legend, but direct labels make the numerical values easier to interpret.</li></ul>
+            </section>
+
+            <section>
+                <h3>AGAINST the Proposition</h3>
+
+                <figure>
+                    <img src="opposing_clinic_map.png" alt="U.S. tile map highlighting 19 states with clinic losses from 2017 to 2020; darker red indicates larger losses." />
+                    <figcaption>19 states lost a combined 47 abortion clinics between 2017 and 2020, demonstrating that clinic availability did not improve everywhere.</figcaption>
+                </figure>
+
+                <p>Design Decisions and Rationale:</p>
+
+                <ul><li><strong>Use a state tile map (+1):</strong> The tile map shows where clinic losses happened while keeping every state in a familiar U.S. layout. Equal-sized tiles make smaller eastern states easier to see, although they do not represent state population or geographic size.</li>
+<li><strong>Label every loss directly (+2):</strong> Each red tile includes the state abbreviation and exact clinic change, so readers do not have to estimate values using color alone. A bar chart would be easier to rank, but it would not display the regional pattern as clearly.</li>
+<li><strong>Use darker red for larger losses (0):</strong> Darker shades make states with greater clinic losses stand out, while the color scale explains the values. Red also makes the decline feel more serious than a neutral color would.</li>
+<li><strong>Show gains and no-change states in gray (−1.5):</strong> Gray directs attention toward clinic losses, but it combines states that gained clinics with states that experienced no change. A red-and-green map would represent both outcomes more equally but weaken the opposing argument.</li>
+<li><strong>State the conclusion in the title (−0.5):</strong> The title emphasizes that losses occurred across 19 states instead of focusing on gains elsewhere. The statement is accurate, but it frames the visualization negatively before readers examine the full pattern.</li></ul>
+            </section>
+
+            <section>
+                <h2>Final Reflection</h2>
+
+                <p>The main challenge in this project was using the same dataset to communicate opposing arguments about abortion clinic availability in the United States between 2017 and 2020. Our supporting visualization highlights the 15 states that gained a combined 42 clinics, while our opposing visualization emphasizes the 19 states that lost a combined 47 clinics. We used tile maps to show where these changes occurred. After receiving feedback that our original maps did not clearly communicate the size of each change, we added color gradients and legends. This allowed larger gains and losses to stand out while preserving the geographic patterns.</p>
+<p>What really surprised us was how different the same dataset could appear through changes in emphasis alone. Green coloring and a title focused on gains create a positive impression, while red coloring and a title focused on losses suggest decline. Fading other states into gray strengthens each argument, even though it leaves out information that could change a reader’s interpretation. The national net decrease of five clinics also hides variation between states. Additionally, clinic counts alone cannot establish whether access improved: they do not account for travel distance, population, affordability, or the number of patients each clinic can serve.</p>
+<p>Through this project, we came to understand ethical visualization as communicating accurate values while providing enough context for readers to evaluate the message. Highlighting a particular pattern can be a reasonable persuasive choice, but withholding information that would substantially change the conclusion can become misleading. Our color gradients and numerical labels make the magnitude of changes clearer, but the selective highlighting still directs attention toward only one side. In a public-facing analysis, we would disclose which states are highlighted and provide the national gains, losses, and net change. This would let readers assess our interpretation alongside the broader evidence.</p>
+            </section>
+        </main>
+    
+</body>
+</html>
