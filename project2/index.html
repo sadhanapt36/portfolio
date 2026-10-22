@@ -148,6 +148,11 @@ section { margin-block: 2.5rem; }
 li { margin-bottom: 1rem; }
 figure > figcaption { font: 500 .875rem/1.5 system-ui; }
 @media(max-width:600px) { h1 { font-size:2.2rem; } main { border-radius:.5rem; } }
+/* Match the supporting map title to the opposing map. */
+.supporting-chart { width: 78%; margin: 1rem auto; }
+.supporting-chart-title { font: 800 clamp(.85rem, 1.7vw, 1.4rem)/1.3 Arial, sans-serif; margin: 0 0 .8rem; }
+.supporting-map-window { overflow: hidden; }
+.supporting-map-window img { margin-top: -4.3%; }
 </style>
     </head>
 
@@ -167,11 +172,15 @@ Raynard Taneka — <a href="mailto:rtaneka@ucsd.edu">rtaneka@ucsd.edu</a></p>
             <h2>Proposition: Abortion clinic availability expanded in the United States between 2017 and 2020.</h2>
 <p><strong>Measure:</strong> Change in the number of abortion clinics between 2017 and 2020.<br>
 <strong>Dataset:</strong> <a href="https://dsc106.com/resources/data/GuttmacherInstituteAbortionDataByState.xlsx">Guttmacher Institute Abortion Data by State (Excel)</a></p>
+<p><strong>Design-decision scores:</strong> −2 = fully deceptive; +2 = fully earnest. Half-point scores are allowed; 0 indicates an undecided assessment.</p>
 <section>
                 <h3>FOR the Proposition</h3>
 
                 <figure>
-                    <img src="supporting_clinic_map.png" alt="U.S. tile map highlighting 15 states with clinic gains from 2017 to 2020; darker green indicates larger gains." />
+                    <div class="supporting-chart">
+                        <h4 class="supporting-chart-title">Supports: 15 states gained abortion clinics, 2017–2020 (+42 total)</h4>
+                        <div class="supporting-map-window"><img src="supporting_clinic_map.png" alt="U.S. tile map highlighting 15 states with clinic gains from 2017 to 2020; darker green indicates larger gains." /></div>
+                    </div>
                     <figcaption>15 states gained a combined 42 abortion clinics between 2017 and 2020. California had the largest gain, with 12 additional clinics.</figcaption>
                 </figure>
 
