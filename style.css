@@ -232,3 +232,57 @@ h1, h2, h3, h4, h5, h6 {
 nav a.current {
   border-bottom-color: var(--border-color);
 }
+
+/* ---------- Lab 4 ---------- */
+.projects article {
+  grid-row: span 3;
+}
+
+.projects h2,
+.projects h3 {
+  margin: 0;
+}
+
+.projects article p {
+  margin: 0;
+}
+
+.project-year {
+  margin-top: 0.5em !important;
+  font-family: Baskerville, serif;
+  font-variant-numeric: oldstyle-nums;
+  color: color-mix(in oklch, CanvasText 60%, Canvas);
+}
+
+.projects-empty {
+  grid-column: 1 / -1;
+  font-style: italic;
+}
+
+#profile-stats {
+  margin-block: 2em;
+}
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+  border: 1px solid color-mix(in oklch, CanvasText 20%, Canvas);
+  border-radius: 0.5em;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-size: 80%;
+  text-transform: uppercase;
+  color: color-mix(in oklch, CanvasText 60%, Canvas);
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  margin: 0;
+  font-size: 200%;
+  font-weight: 600;
+}

@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Abortion Clinic Availability (2017–2020)",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "DSC 106 Project 2: two opposing map visualizations examining whether abortion clinic availability expanded across the United States between 2017 and 2020."
+  },
+  {
+    "title": "Personal Portfolio Website",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "DSC 106 labs: a responsive personal site built with HTML, CSS and JavaScript, featuring a dark mode switcher, data-driven project listings and live GitHub stats."
+  },
+  {
+    "title": "Pricing Insights GenAI Assistant",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built at AT&T: an internal generative AI app using Python, SQL, Databricks and the OpenAI API that lets business teams ask natural-language questions about pricing and financial data."
+  },
+  {
+    "title": "Agentic AI Personalization (Hackathon Winner)",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "1st place in the AT&T Intern Innovation Hackathon with an agentic AI solution for personalizing the customer experience."
+  },
+  {
+    "title": "Product Performance Dashboards",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Predictive models and Power BI dashboards analyzing product performance to support pricing decisions, fed by ETL pipelines that clean and transform financial data."
+  },
+  {
+    "title": "Women's Tennis Performance Analytics",
+    "year": "2026",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Tableau dashboards for UC San Diego Women's Tennis that visualize serve, point and match metrics to support coaching decisions and player development."
+  },
+  {
+    "title": "Optimized Shopper Routing Prototype",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Built at Brain Corp: a routing prototype using digital twin and inventory data, with nearest-neighbor and A* search to find efficient paths between products, entrances and checkout."
+  },
+  {
+    "title": "Spatial Data Feature Evaluation",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Analyzed LiDAR, vSLAM and RGB spatial data with product and engineering stakeholders to evaluate new robotics product features."
+  },
+  {
+    "title": "Scalable Analytics Pipeline",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Coursework for Systems for Scalable Analytics: processing large datasets with distributed tools and comparing performance across approaches."
+  },
+  {
+    "title": "Data Mining Course Project",
+    "year": "2025",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder: applying classification and clustering techniques to a real-world dataset for Data Mining coursework."
+  },
+  {
+    "title": "Econometrics Regression Study",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder: an econometric analysis using regression to estimate the effect of an economic policy on market outcomes."
+  },
+  {
+    "title": "Data Structures Implementations",
+    "year": "2024",
+    "image": "https://vis-society.github.io/labs/2/images/empty.svg",
+    "description": "Placeholder: implementations of core data structures such as linked lists, heaps, hash tables and trees, with tests and runtime analysis."
+  }
+]
