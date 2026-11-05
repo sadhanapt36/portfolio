@@ -476,7 +476,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
 .selection {
   fill-opacity: 0.1;
-  stroke: black;
+  stroke: currentColor; /* follows the text color, so it shows in dark mode */
   stroke-opacity: 0.7;
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;

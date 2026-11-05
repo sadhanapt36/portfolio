@@ -135,15 +135,18 @@ function renderScatterPlot(data, commits) {
 
   yScale = d3
     .scaleLinear()
-    .domain([0, 24])
+    .domain([-1.5, 25.5]) // padding so dots at midnight aren't cut off by the axes
     .range([usableArea.bottom, usableArea.top]);
+  const hourTicks = d3.range(0, 25, 2); // 00:00, 02:00, ... 24:00
 
   // Gridlines first so they sit behind everything else
   const gridlines = svg
     .append('g')
     .attr('class', 'gridlines')
     .attr('transform', `translate(${usableArea.left}, 0)`);
-  gridlines.call(d3.axisLeft(yScale).tickFormat('').tickSize(-usableArea.width));
+  gridlines.call(
+    d3.axisLeft(yScale).tickValues(hourTicks).tickFormat('').tickSize(-usableArea.width),
+  );
 
   // Color each gridline by time of day: blue at night, orange at midday
   gridlines
@@ -186,6 +189,7 @@ function renderScatterPlot(data, commits) {
   const xAxis = d3.axisBottom(xScale);
   const yAxis = d3
     .axisLeft(yScale)
+    .tickValues(hourTicks)
     .tickFormat((d) => String(d % 24).padStart(2, '0') + ':00');
 
   svg
