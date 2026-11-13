@@ -141,9 +141,14 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
   for (const project of projects) {
     const article = document.createElement('article');
     const title = project.title ?? 'Untitled project';
-    const image = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+    const rawImage = project.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+    // resolve local paths (e.g. "images/x.png") from the site root, so they work on every page
+    const image = new URL(rawImage, import.meta.url).href;
     const description = project.description ?? '';
     const year = project.year ? `<p class="project-year">${project.year}</p>` : '';
+    const link = project.url
+      ? `<a class="project-link" href="${project.url}" target="_blank" rel="noopener">View project →</a>`
+      : '';
 
     article.innerHTML = `
       <${headingLevel}>${title}</${headingLevel}>
@@ -151,6 +156,7 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
       <div>
         <p>${description}</p>
         ${year}
+        ${link}
       </div>
     `;
     containerElement.appendChild(article);

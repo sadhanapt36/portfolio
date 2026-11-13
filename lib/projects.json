@@ -1,5 +1,12 @@
 [
   {
+    "title": "Pulse Patterns",
+    "year": "2026",
+    "image": "images/pulse-pattern.png",
+    "description": "An interactive map of bike traffic across Boston and Cambridge built with D3.js, Mapbox GL JS and JavaScript. It visualizes more than 260,000 BlueBikes rides with time-of-day filtering, station activity, and color-coded arrival and departure patterns.",
+    "url": "https://sadhanapt36.github.io/pedal-pulse/"
+  },
+  {
     "title": "Abortion Clinic Availability (2017–2020)",
     "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
@@ -9,7 +16,8 @@
     "title": "Personal Portfolio Website",
     "year": "2026",
     "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-    "description": "DSC 106 labs: a responsive personal site built with HTML, CSS and JavaScript, featuring a dark mode switcher, data-driven project listings and live GitHub stats."
+    "description": "DSC 106 labs: a responsive personal site built with HTML, CSS and JavaScript, featuring a dark mode switcher, data-driven project listings and live GitHub stats.",
+    "url": "https://sadhanapt36.github.io/portfolio/"
   },
   {
     "title": "Pricing Insights GenAI Assistant",
