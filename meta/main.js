@@ -7,6 +7,7 @@ let xScale;
 let yScale;
 let rScale;
 let brushSelection = null;
+let currentCommit = null; // the newest commit on screen; highlighted in both charts
 
 const width = 1000;
 const height = 600;
@@ -223,6 +224,7 @@ function updateScatterPlot(data, commits) {
     .style('--r', (d) => rScale(d.totalLines))
     .attr('fill', 'steelblue')
     .style('fill-opacity', 0.7)
+    .classed('current', (d) => d.id === currentCommit?.id)
     .on('mouseenter', (event, commit) => {
       d3.select(event.currentTarget).style('fill-opacity', 1);
       renderTooltipContent(commit);
@@ -331,8 +333,20 @@ function updateFileDisplay(commits) {
     .data((d) => d.lines)
     .join('div')
     .attr('class', 'loc')
+    // Lines written in the newest commit on screen get highlighted
+    .classed('new', (d) => d.commit === currentCommit?.id)
     // Color each dot by technology (Step 2.4)
     .attr('style', (d) => `--color: ${colors(d.type)}`);
+
+  d3.select('#files').classed('has-highlight', !!currentCommit);
+  const note = document.getElementById('files-highlight');
+  if (currentCommit) {
+    const n = lines.filter((d) => d.commit === currentCommit.id).length;
+    const when = currentCommit.datetime.toLocaleString('en', { dateStyle: 'medium' });
+    note.textContent = `Glowing dots: the ${n} line${n === 1 ? '' : 's'} from the latest commit shown (${when}).`;
+  } else {
+    note.textContent = '';
+  }
 }
 
 // ---------- Scrollytelling text (Step 3.2) ----------
@@ -387,6 +401,7 @@ function setMaxTime(newMaxTime) {
   timeLabel.dateTime = commitMaxTime.toISOString();
 
   filteredCommits = commits.filter((d) => d.datetime <= commitMaxTime);
+  currentCommit = filteredCommits.at(-1) ?? null;
 
   updateScatterPlot(data, filteredCommits);
   updateFileDisplay(filteredCommits);
@@ -397,7 +412,46 @@ function onTimeSliderChange() {
   setMaxTime(timeScale.invert(commitProgress));
 }
 
-slider.addEventListener('input', onTimeSliderChange);
+slider.addEventListener('input', () => {
+  stopPlaying();
+  onTimeSliderChange();
+});
+
+// ---------- Play button: replay the site's history one commit at a time ----------
+const playBtn = document.getElementById('play-btn');
+let playTimer = null;
+
+function showCommit(commit) {
+  slider.value = timeScale(commit.datetime);
+  commitProgress = Number(slider.value);
+  setMaxTime(commit.datetime);
+}
+
+function stopPlaying() {
+  if (playTimer) clearInterval(playTimer);
+  playTimer = null;
+  playBtn.textContent = '▶ Play';
+  playBtn.setAttribute('aria-label', 'Play history');
+}
+
+function startPlaying() {
+  // Start over if we're already at the end
+  let i = filteredCommits.length >= commits.length ? 0 : filteredCommits.length;
+  showCommit(commits[i]);
+  playBtn.textContent = '❚❚ Pause';
+  playBtn.setAttribute('aria-label', 'Pause history');
+
+  playTimer = setInterval(() => {
+    i += 1;
+    if (i >= commits.length) {
+      stopPlaying();
+      return;
+    }
+    showCommit(commits[i]);
+  }, 900);
+}
+
+playBtn.addEventListener('click', () => (playTimer ? stopPlaying() : startPlaying()));
 
 renderCommitInfo(data, commits); // summary always covers the whole repo
 renderScatterPlot(data, commits);
@@ -406,10 +460,8 @@ renderStory(commits);
 
 // Scrollama: scrolling to a step shows the site up to that commit (Step 3.3)
 function onStepEnter(response) {
-  const commit = response.element.__data__;
-  slider.value = timeScale(commit.datetime);
-  commitProgress = Number(slider.value);
-  setMaxTime(commit.datetime);
+  stopPlaying();
+  showCommit(response.element.__data__);
 }
 
 const scroller = scrollama();

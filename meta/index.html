@@ -22,6 +22,7 @@
 
         <div id="scatter-plot">
             <div class="time-filter">
+                <button id="play-btn" type="button" aria-label="Play history">▶ Play</button>
                 <label for="commit-progress">Show commits until:</label>
                 <input type="range" id="commit-progress" min="0" max="100" step="any" value="100">
                 <time id="commit-time"></time>
@@ -33,7 +34,8 @@
     </div>
 
     <h2>Files by size</h2>
-    <p class="files-note">Each dot is one line of code, colored by language.</p>
+    <p class="files-note">Each dot is one line of code, colored by language.
+       <span id="files-highlight"></span></p>
     <dl id="files"></dl>
 
     <dl id="commit-tooltip" class="info tooltip" hidden>

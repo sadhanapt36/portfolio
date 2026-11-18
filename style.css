@@ -420,7 +420,7 @@ nav a.current {
 
 #chart circle {
   /* Bigger circles grow in more slowly (Lab 8, Step 1.4) */
-  transition: all 200ms, r calc(var(--r) * 50ms);
+  transition: all 200ms, r calc(var(--r) * 20ms);
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -622,4 +622,64 @@ dl.info[hidden]:not(:hover, :focus-within) {
 /* Axis labels stay readable now that the chart sits in a narrower column */
 #chart .tick text {
   font-size: 18px;
+}
+
+/* ---------- Lab 8 extras: current-commit highlight + play button ---------- */
+#play-btn {
+  font: inherit;
+  font-size: 90%;
+  padding: 0.3em 0.8em;
+  border: 1px solid color-mix(in oklch, CanvasText 30%, Canvas);
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--color-accent) 35%, Canvas);
+  color: CanvasText;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+#play-btn:hover {
+  background: color-mix(in oklch, var(--color-accent) 60%, Canvas);
+}
+
+/* Current commit: solid fill and a pulsing ring */
+#chart circle.current {
+  fill-opacity: 1 !important;
+  stroke: #e8a33d;
+  stroke-width: 4;
+  animation: pulse-ring 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  50% {
+    stroke-width: 10;
+    stroke-opacity: 0.4;
+  }
+}
+
+/* Brush selection still wins over the highlight color */
+#chart circle.current.selected {
+  fill: #ff6b6b;
+}
+
+/* File dots: fade the old lines a little so the new ones pop */
+#files.has-highlight .loc {
+  opacity: 0.45;
+  transition: opacity 300ms, transform 300ms, box-shadow 300ms;
+}
+
+#files.has-highlight .loc.new {
+  opacity: 1;
+  transform: scale(1.35);
+  box-shadow: 0 0 0 2px Canvas, 0 0 6px 2px var(--color);
+}
+
+#files-highlight {
+  display: block;
+  font-size: 90%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #chart circle.current {
+    animation: none;
+  }
 }
