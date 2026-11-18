@@ -419,7 +419,8 @@ nav a.current {
 }
 
 #chart circle {
-  transition: 200ms;
+  /* Bigger circles grow in more slowly (Lab 8, Step 1.4) */
+  transition: all 200ms, r calc(var(--r) * 50ms);
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -480,4 +481,145 @@ dl.info[hidden]:not(:hover, :focus-within) {
   stroke-opacity: 0.7;
   stroke-dasharray: 5 3;
   animation: marching-ants 2s linear infinite;
+}
+
+
+/* ---------- Lab 8: slider, scrollytelling, unit visualization ---------- */
+@starting-style {
+  #chart circle {
+    r: 0;
+  }
+}
+
+.time-filter {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75em;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+.time-filter input {
+  flex: 1;
+  min-width: 10em;
+}
+
+.time-filter time {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  color: color-mix(in oklch, CanvasText 70%, Canvas);
+}
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 2em;
+}
+
+#scatter-story {
+  flex: 1;
+  min-width: 0;
+}
+
+#scatter-plot {
+  flex: 1.6;
+  min-width: 0;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  padding-top: 1em;
+  box-sizing: border-box;
+}
+
+.step {
+  padding-block: 35vh;
+}
+
+.step:first-child {
+  padding-top: 10vh;
+}
+
+.step p {
+  margin: 0 0 0.5em;
+}
+
+@media (max-width: 700px) {
+  #scrolly-1 {
+    flex-direction: column-reverse;
+  }
+
+  #scatter-plot {
+    height: auto;
+    z-index: 1;
+    background: Canvas;
+  }
+
+  .step {
+    padding-block: 25vh;
+  }
+}
+
+#language-breakdown dt::before {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  margin-right: 0.35em;
+  background: var(--color);
+}
+
+.files-note {
+  color: color-mix(in oklch, CanvasText 65%, Canvas);
+}
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 0.75em 1.5em;
+  margin: 0;
+}
+
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+}
+
+#files dt {
+  grid-column: 1;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+#files dt small {
+  display: block;
+  font-size: 75%;
+  opacity: 0.65;
+}
+
+#files dd {
+  grid-column: 2;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color);
+  border-radius: 50%;
+}
+
+/* Axis labels stay readable now that the chart sits in a narrower column */
+#chart .tick text {
+  font-size: 18px;
 }
